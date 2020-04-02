@@ -19,3 +19,17 @@ function copyRange() {
     range.copyValuesToRange(destination, 1, lastColumn, 1, lastRow);    
   }
 }
+
+
+//Variant 2: Copy Values of certain range (if Values are stored in multiple Rows)
+
+/* get Sheet by A1 Notation Name
+function getSheetByName(sheets, name) {
+    for (var i = 0; i < sheets.length; i++) {
+        var sheet = sheets[i];
+            if (sheet.getName() == name) {
+        return sheet
+        }
+    }
+}
+*/
