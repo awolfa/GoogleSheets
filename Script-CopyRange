@@ -1,0 +1,21 @@
+function copyRange() {
+  // get sheets and checkCell
+    var spreadsheet = SpreadsheetApp.getActiveSpreadsheet();
+    var source = ss.getSheetByName('Your Sheet here');
+    var destination = ss.getSheetByName('Your Sheet here');
+    var checkCell = source.getRange('G30').getValue();
+  
+ 
+  // failsafe, if API didn`t load, the script does not run
+    if (checkCell !== '') {   
+  
+  // get range
+    var lastRow = source.getLastRow();
+    var lastColumn = source.getLastColumn();
+    var range = source.getRange(1, 1, lastRow, lastColumn);
+
+  // clear target Sheet, copy range to target sheet
+    destination.clear()
+    range.copyValuesToRange(destination, 1, lastColumn, 1, lastRow);    
+  }
+}
