@@ -1,0 +1,26 @@
+function pullJSON() {
+  var ss = SpreadsheetApp.getActiveSpreadsheet();
+  var sheets = ss.getSheets();
+  var sheet = ss.getActiveSheet();
+
+
+  var url="http://example.com/feeds?type=json"; // Paste your JSON URL here
+  
+   var response = UrlFetchApp.fetch(url); // get feed
+  var dataAll = JSON.parse(response.getContentText()); //
+  var dataSet = dataAll;
+  
+  
+  var rows = [],
+      data;
+  
+
+  for (i = 0; i < dataSet.length; i++) {
+    data = dataSet[i];
+    rows.push([data.id, data.name,data.email]); //your JSON entities here
+  }
+
+  dataRange = sheet.getRange(1, 1, rows.length, 3); // 3 Denotes total number of entites
+  dataRange.setValues(rows);
+
+}
